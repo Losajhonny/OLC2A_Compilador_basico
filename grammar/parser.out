@@ -1,0 +1,636 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    and
+    coma
+    comentario_multilinea
+    comentario_simple
+    difque
+    igual
+    igualque
+    mayigual
+    mayque
+    menigual
+    menque
+    not
+    or
+    pyc
+
+Grammar
+
+Rule 0     S' -> init
+Rule 1     init -> expresion
+Rule 2     expresion -> expresion mas expresion
+Rule 3     expresion -> expresion men expresion
+Rule 4     expresion -> expresion por expresion
+Rule 5     expresion -> expresion div expresion
+Rule 6     expresion -> expresion mod expresion
+Rule 7     expresion -> expresion pow expresion
+Rule 8     expresion -> men expresion
+Rule 9     expresion -> pari expresion pard
+Rule 10    expresion -> entero
+Rule 11    expresion -> decimal
+Rule 12    expresion -> cadena
+Rule 13    expresion -> caracter
+Rule 14    expresion -> id
+
+Terminals, with rules where they appear
+
+and                  : 
+cadena               : 12
+caracter             : 13
+coma                 : 
+comentario_multilinea : 
+comentario_simple    : 
+decimal              : 11
+difque               : 
+div                  : 5
+entero               : 10
+error                : 
+id                   : 14
+igual                : 
+igualque             : 
+mas                  : 2
+mayigual             : 
+mayque               : 
+men                  : 3 8
+menigual             : 
+menque               : 
+mod                  : 6
+not                  : 
+or                   : 
+pard                 : 9
+pari                 : 9
+por                  : 4
+pow                  : 7
+pyc                  : 
+
+Nonterminals, with rules where they appear
+
+expresion            : 1 2 2 3 3 4 4 5 5 6 6 7 7 8 9
+init                 : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . init
+    (1) init -> . expresion
+    (2) expresion -> . expresion mas expresion
+    (3) expresion -> . expresion men expresion
+    (4) expresion -> . expresion por expresion
+    (5) expresion -> . expresion div expresion
+    (6) expresion -> . expresion mod expresion
+    (7) expresion -> . expresion pow expresion
+    (8) expresion -> . men expresion
+    (9) expresion -> . pari expresion pard
+    (10) expresion -> . entero
+    (11) expresion -> . decimal
+    (12) expresion -> . cadena
+    (13) expresion -> . caracter
+    (14) expresion -> . id
+
+    men             shift and go to state 3
+    pari            shift and go to state 4
+    entero          shift and go to state 5
+    decimal         shift and go to state 6
+    cadena          shift and go to state 7
+    caracter        shift and go to state 8
+    id              shift and go to state 9
+
+    init                           shift and go to state 1
+    expresion                      shift and go to state 2
+
+state 1
+
+    (0) S' -> init .
+
+
+
+state 2
+
+    (1) init -> expresion .
+    (2) expresion -> expresion . mas expresion
+    (3) expresion -> expresion . men expresion
+    (4) expresion -> expresion . por expresion
+    (5) expresion -> expresion . div expresion
+    (6) expresion -> expresion . mod expresion
+    (7) expresion -> expresion . pow expresion
+
+    $end            reduce using rule 1 (init -> expresion .)
+    mas             shift and go to state 10
+    men             shift and go to state 11
+    por             shift and go to state 12
+    div             shift and go to state 13
+    mod             shift and go to state 14
+    pow             shift and go to state 15
+
+
+state 3
+
+    (8) expresion -> men . expresion
+    (2) expresion -> . expresion mas expresion
+    (3) expresion -> . expresion men expresion
+    (4) expresion -> . expresion por expresion
+    (5) expresion -> . expresion div expresion
+    (6) expresion -> . expresion mod expresion
+    (7) expresion -> . expresion pow expresion
+    (8) expresion -> . men expresion
+    (9) expresion -> . pari expresion pard
+    (10) expresion -> . entero
+    (11) expresion -> . decimal
+    (12) expresion -> . cadena
+    (13) expresion -> . caracter
+    (14) expresion -> . id
+
+    men             shift and go to state 3
+    pari            shift and go to state 4
+    entero          shift and go to state 5
+    decimal         shift and go to state 6
+    cadena          shift and go to state 7
+    caracter        shift and go to state 8
+    id              shift and go to state 9
+
+    expresion                      shift and go to state 16
+
+state 4
+
+    (9) expresion -> pari . expresion pard
+    (2) expresion -> . expresion mas expresion
+    (3) expresion -> . expresion men expresion
+    (4) expresion -> . expresion por expresion
+    (5) expresion -> . expresion div expresion
+    (6) expresion -> . expresion mod expresion
+    (7) expresion -> . expresion pow expresion
+    (8) expresion -> . men expresion
+    (9) expresion -> . pari expresion pard
+    (10) expresion -> . entero
+    (11) expresion -> . decimal
+    (12) expresion -> . cadena
+    (13) expresion -> . caracter
+    (14) expresion -> . id
+
+    men             shift and go to state 3
+    pari            shift and go to state 4
+    entero          shift and go to state 5
+    decimal         shift and go to state 6
+    cadena          shift and go to state 7
+    caracter        shift and go to state 8
+    id              shift and go to state 9
+
+    expresion                      shift and go to state 17
+
+state 5
+
+    (10) expresion -> entero .
+
+    mas             reduce using rule 10 (expresion -> entero .)
+    men             reduce using rule 10 (expresion -> entero .)
+    por             reduce using rule 10 (expresion -> entero .)
+    div             reduce using rule 10 (expresion -> entero .)
+    mod             reduce using rule 10 (expresion -> entero .)
+    pow             reduce using rule 10 (expresion -> entero .)
+    $end            reduce using rule 10 (expresion -> entero .)
+    pard            reduce using rule 10 (expresion -> entero .)
+
+
+state 6
+
+    (11) expresion -> decimal .
+
+    mas             reduce using rule 11 (expresion -> decimal .)
+    men             reduce using rule 11 (expresion -> decimal .)
+    por             reduce using rule 11 (expresion -> decimal .)
+    div             reduce using rule 11 (expresion -> decimal .)
+    mod             reduce using rule 11 (expresion -> decimal .)
+    pow             reduce using rule 11 (expresion -> decimal .)
+    $end            reduce using rule 11 (expresion -> decimal .)
+    pard            reduce using rule 11 (expresion -> decimal .)
+
+
+state 7
+
+    (12) expresion -> cadena .
+
+    mas             reduce using rule 12 (expresion -> cadena .)
+    men             reduce using rule 12 (expresion -> cadena .)
+    por             reduce using rule 12 (expresion -> cadena .)
+    div             reduce using rule 12 (expresion -> cadena .)
+    mod             reduce using rule 12 (expresion -> cadena .)
+    pow             reduce using rule 12 (expresion -> cadena .)
+    $end            reduce using rule 12 (expresion -> cadena .)
+    pard            reduce using rule 12 (expresion -> cadena .)
+
+
+state 8
+
+    (13) expresion -> caracter .
+
+    mas             reduce using rule 13 (expresion -> caracter .)
+    men             reduce using rule 13 (expresion -> caracter .)
+    por             reduce using rule 13 (expresion -> caracter .)
+    div             reduce using rule 13 (expresion -> caracter .)
+    mod             reduce using rule 13 (expresion -> caracter .)
+    pow             reduce using rule 13 (expresion -> caracter .)
+    $end            reduce using rule 13 (expresion -> caracter .)
+    pard            reduce using rule 13 (expresion -> caracter .)
+
+
+state 9
+
+    (14) expresion -> id .
+
+    mas             reduce using rule 14 (expresion -> id .)
+    men             reduce using rule 14 (expresion -> id .)
+    por             reduce using rule 14 (expresion -> id .)
+    div             reduce using rule 14 (expresion -> id .)
+    mod             reduce using rule 14 (expresion -> id .)
+    pow             reduce using rule 14 (expresion -> id .)
+    $end            reduce using rule 14 (expresion -> id .)
+    pard            reduce using rule 14 (expresion -> id .)
+
+
+state 10
+
+    (2) expresion -> expresion mas . expresion
+    (2) expresion -> . expresion mas expresion
+    (3) expresion -> . expresion men expresion
+    (4) expresion -> . expresion por expresion
+    (5) expresion -> . expresion div expresion
+    (6) expresion -> . expresion mod expresion
+    (7) expresion -> . expresion pow expresion
+    (8) expresion -> . men expresion
+    (9) expresion -> . pari expresion pard
+    (10) expresion -> . entero
+    (11) expresion -> . decimal
+    (12) expresion -> . cadena
+    (13) expresion -> . caracter
+    (14) expresion -> . id
+
+    men             shift and go to state 3
+    pari            shift and go to state 4
+    entero          shift and go to state 5
+    decimal         shift and go to state 6
+    cadena          shift and go to state 7
+    caracter        shift and go to state 8
+    id              shift and go to state 9
+
+    expresion                      shift and go to state 18
+
+state 11
+
+    (3) expresion -> expresion men . expresion
+    (2) expresion -> . expresion mas expresion
+    (3) expresion -> . expresion men expresion
+    (4) expresion -> . expresion por expresion
+    (5) expresion -> . expresion div expresion
+    (6) expresion -> . expresion mod expresion
+    (7) expresion -> . expresion pow expresion
+    (8) expresion -> . men expresion
+    (9) expresion -> . pari expresion pard
+    (10) expresion -> . entero
+    (11) expresion -> . decimal
+    (12) expresion -> . cadena
+    (13) expresion -> . caracter
+    (14) expresion -> . id
+
+    men             shift and go to state 3
+    pari            shift and go to state 4
+    entero          shift and go to state 5
+    decimal         shift and go to state 6
+    cadena          shift and go to state 7
+    caracter        shift and go to state 8
+    id              shift and go to state 9
+
+    expresion                      shift and go to state 19
+
+state 12
+
+    (4) expresion -> expresion por . expresion
+    (2) expresion -> . expresion mas expresion
+    (3) expresion -> . expresion men expresion
+    (4) expresion -> . expresion por expresion
+    (5) expresion -> . expresion div expresion
+    (6) expresion -> . expresion mod expresion
+    (7) expresion -> . expresion pow expresion
+    (8) expresion -> . men expresion
+    (9) expresion -> . pari expresion pard
+    (10) expresion -> . entero
+    (11) expresion -> . decimal
+    (12) expresion -> . cadena
+    (13) expresion -> . caracter
+    (14) expresion -> . id
+
+    men             shift and go to state 3
+    pari            shift and go to state 4
+    entero          shift and go to state 5
+    decimal         shift and go to state 6
+    cadena          shift and go to state 7
+    caracter        shift and go to state 8
+    id              shift and go to state 9
+
+    expresion                      shift and go to state 20
+
+state 13
+
+    (5) expresion -> expresion div . expresion
+    (2) expresion -> . expresion mas expresion
+    (3) expresion -> . expresion men expresion
+    (4) expresion -> . expresion por expresion
+    (5) expresion -> . expresion div expresion
+    (6) expresion -> . expresion mod expresion
+    (7) expresion -> . expresion pow expresion
+    (8) expresion -> . men expresion
+    (9) expresion -> . pari expresion pard
+    (10) expresion -> . entero
+    (11) expresion -> . decimal
+    (12) expresion -> . cadena
+    (13) expresion -> . caracter
+    (14) expresion -> . id
+
+    men             shift and go to state 3
+    pari            shift and go to state 4
+    entero          shift and go to state 5
+    decimal         shift and go to state 6
+    cadena          shift and go to state 7
+    caracter        shift and go to state 8
+    id              shift and go to state 9
+
+    expresion                      shift and go to state 21
+
+state 14
+
+    (6) expresion -> expresion mod . expresion
+    (2) expresion -> . expresion mas expresion
+    (3) expresion -> . expresion men expresion
+    (4) expresion -> . expresion por expresion
+    (5) expresion -> . expresion div expresion
+    (6) expresion -> . expresion mod expresion
+    (7) expresion -> . expresion pow expresion
+    (8) expresion -> . men expresion
+    (9) expresion -> . pari expresion pard
+    (10) expresion -> . entero
+    (11) expresion -> . decimal
+    (12) expresion -> . cadena
+    (13) expresion -> . caracter
+    (14) expresion -> . id
+
+    men             shift and go to state 3
+    pari            shift and go to state 4
+    entero          shift and go to state 5
+    decimal         shift and go to state 6
+    cadena          shift and go to state 7
+    caracter        shift and go to state 8
+    id              shift and go to state 9
+
+    expresion                      shift and go to state 22
+
+state 15
+
+    (7) expresion -> expresion pow . expresion
+    (2) expresion -> . expresion mas expresion
+    (3) expresion -> . expresion men expresion
+    (4) expresion -> . expresion por expresion
+    (5) expresion -> . expresion div expresion
+    (6) expresion -> . expresion mod expresion
+    (7) expresion -> . expresion pow expresion
+    (8) expresion -> . men expresion
+    (9) expresion -> . pari expresion pard
+    (10) expresion -> . entero
+    (11) expresion -> . decimal
+    (12) expresion -> . cadena
+    (13) expresion -> . caracter
+    (14) expresion -> . id
+
+    men             shift and go to state 3
+    pari            shift and go to state 4
+    entero          shift and go to state 5
+    decimal         shift and go to state 6
+    cadena          shift and go to state 7
+    caracter        shift and go to state 8
+    id              shift and go to state 9
+
+    expresion                      shift and go to state 23
+
+state 16
+
+    (8) expresion -> men expresion .
+    (2) expresion -> expresion . mas expresion
+    (3) expresion -> expresion . men expresion
+    (4) expresion -> expresion . por expresion
+    (5) expresion -> expresion . div expresion
+    (6) expresion -> expresion . mod expresion
+    (7) expresion -> expresion . pow expresion
+
+    mas             reduce using rule 8 (expresion -> men expresion .)
+    men             reduce using rule 8 (expresion -> men expresion .)
+    por             reduce using rule 8 (expresion -> men expresion .)
+    div             reduce using rule 8 (expresion -> men expresion .)
+    mod             reduce using rule 8 (expresion -> men expresion .)
+    $end            reduce using rule 8 (expresion -> men expresion .)
+    pard            reduce using rule 8 (expresion -> men expresion .)
+    pow             shift and go to state 15
+
+  ! pow             [ reduce using rule 8 (expresion -> men expresion .) ]
+  ! mas             [ shift and go to state 10 ]
+  ! men             [ shift and go to state 11 ]
+  ! por             [ shift and go to state 12 ]
+  ! div             [ shift and go to state 13 ]
+  ! mod             [ shift and go to state 14 ]
+
+
+state 17
+
+    (9) expresion -> pari expresion . pard
+    (2) expresion -> expresion . mas expresion
+    (3) expresion -> expresion . men expresion
+    (4) expresion -> expresion . por expresion
+    (5) expresion -> expresion . div expresion
+    (6) expresion -> expresion . mod expresion
+    (7) expresion -> expresion . pow expresion
+
+    pard            shift and go to state 24
+    mas             shift and go to state 10
+    men             shift and go to state 11
+    por             shift and go to state 12
+    div             shift and go to state 13
+    mod             shift and go to state 14
+    pow             shift and go to state 15
+
+
+state 18
+
+    (2) expresion -> expresion mas expresion .
+    (2) expresion -> expresion . mas expresion
+    (3) expresion -> expresion . men expresion
+    (4) expresion -> expresion . por expresion
+    (5) expresion -> expresion . div expresion
+    (6) expresion -> expresion . mod expresion
+    (7) expresion -> expresion . pow expresion
+
+    mas             reduce using rule 2 (expresion -> expresion mas expresion .)
+    men             reduce using rule 2 (expresion -> expresion mas expresion .)
+    $end            reduce using rule 2 (expresion -> expresion mas expresion .)
+    pard            reduce using rule 2 (expresion -> expresion mas expresion .)
+    por             shift and go to state 12
+    div             shift and go to state 13
+    mod             shift and go to state 14
+    pow             shift and go to state 15
+
+  ! por             [ reduce using rule 2 (expresion -> expresion mas expresion .) ]
+  ! div             [ reduce using rule 2 (expresion -> expresion mas expresion .) ]
+  ! mod             [ reduce using rule 2 (expresion -> expresion mas expresion .) ]
+  ! pow             [ reduce using rule 2 (expresion -> expresion mas expresion .) ]
+  ! mas             [ shift and go to state 10 ]
+  ! men             [ shift and go to state 11 ]
+
+
+state 19
+
+    (3) expresion -> expresion men expresion .
+    (2) expresion -> expresion . mas expresion
+    (3) expresion -> expresion . men expresion
+    (4) expresion -> expresion . por expresion
+    (5) expresion -> expresion . div expresion
+    (6) expresion -> expresion . mod expresion
+    (7) expresion -> expresion . pow expresion
+
+    mas             reduce using rule 3 (expresion -> expresion men expresion .)
+    men             reduce using rule 3 (expresion -> expresion men expresion .)
+    $end            reduce using rule 3 (expresion -> expresion men expresion .)
+    pard            reduce using rule 3 (expresion -> expresion men expresion .)
+    por             shift and go to state 12
+    div             shift and go to state 13
+    mod             shift and go to state 14
+    pow             shift and go to state 15
+
+  ! por             [ reduce using rule 3 (expresion -> expresion men expresion .) ]
+  ! div             [ reduce using rule 3 (expresion -> expresion men expresion .) ]
+  ! mod             [ reduce using rule 3 (expresion -> expresion men expresion .) ]
+  ! pow             [ reduce using rule 3 (expresion -> expresion men expresion .) ]
+  ! mas             [ shift and go to state 10 ]
+  ! men             [ shift and go to state 11 ]
+
+
+state 20
+
+    (4) expresion -> expresion por expresion .
+    (2) expresion -> expresion . mas expresion
+    (3) expresion -> expresion . men expresion
+    (4) expresion -> expresion . por expresion
+    (5) expresion -> expresion . div expresion
+    (6) expresion -> expresion . mod expresion
+    (7) expresion -> expresion . pow expresion
+
+    mas             reduce using rule 4 (expresion -> expresion por expresion .)
+    men             reduce using rule 4 (expresion -> expresion por expresion .)
+    por             reduce using rule 4 (expresion -> expresion por expresion .)
+    div             reduce using rule 4 (expresion -> expresion por expresion .)
+    mod             reduce using rule 4 (expresion -> expresion por expresion .)
+    $end            reduce using rule 4 (expresion -> expresion por expresion .)
+    pard            reduce using rule 4 (expresion -> expresion por expresion .)
+    pow             shift and go to state 15
+
+  ! pow             [ reduce using rule 4 (expresion -> expresion por expresion .) ]
+  ! mas             [ shift and go to state 10 ]
+  ! men             [ shift and go to state 11 ]
+  ! por             [ shift and go to state 12 ]
+  ! div             [ shift and go to state 13 ]
+  ! mod             [ shift and go to state 14 ]
+
+
+state 21
+
+    (5) expresion -> expresion div expresion .
+    (2) expresion -> expresion . mas expresion
+    (3) expresion -> expresion . men expresion
+    (4) expresion -> expresion . por expresion
+    (5) expresion -> expresion . div expresion
+    (6) expresion -> expresion . mod expresion
+    (7) expresion -> expresion . pow expresion
+
+    mas             reduce using rule 5 (expresion -> expresion div expresion .)
+    men             reduce using rule 5 (expresion -> expresion div expresion .)
+    por             reduce using rule 5 (expresion -> expresion div expresion .)
+    div             reduce using rule 5 (expresion -> expresion div expresion .)
+    mod             reduce using rule 5 (expresion -> expresion div expresion .)
+    $end            reduce using rule 5 (expresion -> expresion div expresion .)
+    pard            reduce using rule 5 (expresion -> expresion div expresion .)
+    pow             shift and go to state 15
+
+  ! pow             [ reduce using rule 5 (expresion -> expresion div expresion .) ]
+  ! mas             [ shift and go to state 10 ]
+  ! men             [ shift and go to state 11 ]
+  ! por             [ shift and go to state 12 ]
+  ! div             [ shift and go to state 13 ]
+  ! mod             [ shift and go to state 14 ]
+
+
+state 22
+
+    (6) expresion -> expresion mod expresion .
+    (2) expresion -> expresion . mas expresion
+    (3) expresion -> expresion . men expresion
+    (4) expresion -> expresion . por expresion
+    (5) expresion -> expresion . div expresion
+    (6) expresion -> expresion . mod expresion
+    (7) expresion -> expresion . pow expresion
+
+    mas             reduce using rule 6 (expresion -> expresion mod expresion .)
+    men             reduce using rule 6 (expresion -> expresion mod expresion .)
+    por             reduce using rule 6 (expresion -> expresion mod expresion .)
+    div             reduce using rule 6 (expresion -> expresion mod expresion .)
+    mod             reduce using rule 6 (expresion -> expresion mod expresion .)
+    $end            reduce using rule 6 (expresion -> expresion mod expresion .)
+    pard            reduce using rule 6 (expresion -> expresion mod expresion .)
+    pow             shift and go to state 15
+
+  ! pow             [ reduce using rule 6 (expresion -> expresion mod expresion .) ]
+  ! mas             [ shift and go to state 10 ]
+  ! men             [ shift and go to state 11 ]
+  ! por             [ shift and go to state 12 ]
+  ! div             [ shift and go to state 13 ]
+  ! mod             [ shift and go to state 14 ]
+
+
+state 23
+
+    (7) expresion -> expresion pow expresion .
+    (2) expresion -> expresion . mas expresion
+    (3) expresion -> expresion . men expresion
+    (4) expresion -> expresion . por expresion
+    (5) expresion -> expresion . div expresion
+    (6) expresion -> expresion . mod expresion
+    (7) expresion -> expresion . pow expresion
+
+    mas             reduce using rule 7 (expresion -> expresion pow expresion .)
+    men             reduce using rule 7 (expresion -> expresion pow expresion .)
+    por             reduce using rule 7 (expresion -> expresion pow expresion .)
+    div             reduce using rule 7 (expresion -> expresion pow expresion .)
+    mod             reduce using rule 7 (expresion -> expresion pow expresion .)
+    $end            reduce using rule 7 (expresion -> expresion pow expresion .)
+    pard            reduce using rule 7 (expresion -> expresion pow expresion .)
+    pow             shift and go to state 15
+
+  ! pow             [ reduce using rule 7 (expresion -> expresion pow expresion .) ]
+  ! mas             [ shift and go to state 10 ]
+  ! men             [ shift and go to state 11 ]
+  ! por             [ shift and go to state 12 ]
+  ! div             [ shift and go to state 13 ]
+  ! mod             [ shift and go to state 14 ]
+
+
+state 24
+
+    (9) expresion -> pari expresion pard .
+
+    mas             reduce using rule 9 (expresion -> pari expresion pard .)
+    men             reduce using rule 9 (expresion -> pari expresion pard .)
+    por             reduce using rule 9 (expresion -> pari expresion pard .)
+    div             reduce using rule 9 (expresion -> pari expresion pard .)
+    mod             reduce using rule 9 (expresion -> pari expresion pard .)
+    pow             reduce using rule 9 (expresion -> pari expresion pard .)
+    $end            reduce using rule 9 (expresion -> pari expresion pard .)
+    pard            reduce using rule 9 (expresion -> pari expresion pard .)
+
