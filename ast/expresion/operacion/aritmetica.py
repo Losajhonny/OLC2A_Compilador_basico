@@ -1,47 +1,68 @@
-from ast.expresion.expresion import Expresion
-from ast.enums import OpeAritmetica, Tipo
+from ast.expresion.operacion.operacion import Operacion
+from ast.enums import OpeAritmetica
 from ast.ast import Ast
 
-class Aritmetica(Expresion):
-    def __init__(self, op, exp1, exp2, linea):
-        super().__init__()
-        self.op = op
-        self.exp1 = exp1
-        self.exp2 = exp2
-        self.linea = linea
+class Aritmetica(Operacion):
+    def __init__(self, op, izq, der, linea):
+        super().__init__(op, izq, der, linea)
 
-    '''
-        Genera codigo de 3 direcciones
-        tn = tn-1 + tn-2
-        En tn se puede definir
-            - una constante
-            - un literal
-    '''
     def genC3D(self, ent):
-        if self.exp2 == None:
-            return self.getUnario(ent)
-        else:
-            # expresiones
-            t1 = self.exp1.genC3D(ent)
-            t2 = self.exp2.genC3D(ent)
-            # tn = self.newTemp()
-            # print(f"{tn} = {t1} {self.getOp()} {t2}")
+        if self.esOperacionUnaria():
+            return self.reducirUnaria(ent)
+        return self.reducirBinario(ent)
 
-            # reutilizacion de temporales
-            Ast.temp = Ast.temp - self.exp1.num - self.exp2.num + 1
-            tn = self.getTemp()
-            self.num = 1
-            print(f"{tn} = {t1} {self.getOp()} {t2}")
-
-            return tn
-
-    def getUnario(self, ent):
-        t1 = self.exp1.genC3D(ent)
+    def reducirUnaria(self, ent):
+        # expresion: - expresion {acciones}
+        # reducir exp
+        t1 = self.izq.genC3D(ent)
+        # acciones
         tn = self.newTemp()
         print(f"{tn} = - {t1}")
         return tn
 
-    def getOp(self):
+    def reducirBinario(self, ent):
+        # expresion: expresion ope expresion {acciones}
+        # reducir izq
+        t1 = self.izq.genC3D(ent)
+        # reducir der
+        t2 = self.der.genC3D(ent)
+        # {acciones}
+        tn = self.newTemp()
+        print(f"{tn} = {t1} {self.getOperador()} {t2}")
+
+        # # reutilizacion de temporales
+        # # Generar un nuevo temporal
+        # Ast.temp = Ast.temp + 1
+        # # Ahora restar temporales el num de temporales del lado derecho
+        # Ast.temp = Ast.temp - self.izq.num - self.der.num
+        # tn = self.getTemp()
+        # self.num = 1
+        # print(f"{tn} = {t1} {self.getOperador()} {t2}")
+
+        return tn
+
+    def genParseTree(self):
+        if self.der == None:
+            # expresion: ope expresion {acciones}
+            # reducir izq
+            ptr1 = self.izq.genParseTree()
+            # {acciones}
+            ptr2 = self.crearHoja("-");
+            ptr = self.crearNodo("expresion", [ptr2, ptr1])
+
+            return ptr
+        else:
+            # expresion: expresion ope expresion {acciones}
+            # reducir izq
+            ptr1 = self.izq.genParseTree()
+            # reducir der
+            ptr2 = self.der.genParseTree()
+            # {acciones}
+            ptr3 = self.crearHoja(self.getOperador());
+            ptr = self.crearNodo("expresion", [ptr1, ptr3, ptr2])
+            return ptr
+
+    def getOperador(self):
         if self.op == OpeAritmetica.SUMA:
             return "+"
         elif self.op == OpeAritmetica.RESTA:

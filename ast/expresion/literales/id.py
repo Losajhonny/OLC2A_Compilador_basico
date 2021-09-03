@@ -10,3 +10,7 @@ class Id(Expresion):
 
     def genC3D(self, ent):
         return self.id
+
+    def genParseTree(self):
+        ptr1 = self.crearHoja(self.id)
+        return self.crearNodo("expresion", [ptr1])

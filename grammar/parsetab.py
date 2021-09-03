@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'rightigualleftorleftandrightnotnonassocmayquemenquemayigualmenigualigualquedifqueleftmasmenleftpordivmodrightumenrightpowand cadena caracter coma comentario_multilinea comentario_simple decimal difque div entero id igual igualque mas mayigual mayque men menigual menque mod not or pard pari por pow pycinit :   expresionexpresion    :   expresion mas expresion\n                    |   expresion men expresion\n                    |   expresion por expresion\n                    |   expresion div expresion\n                    |   expresion mod expresion\n                    |   expresion pow expresionexpresion  :   men expresion %prec umenexpresion  :   pari expresion pardexpresion  :   enteroexpresion  :   decimalexpresion  :   cadenaexpresion  :   caracterexpresion  :   id'
+_lr_signature = 'rightigualleftorleftxorleftandrightnotnonassocmayquemenquemayigualmenigualigualquedifqueleftmasmenleftpordivmodrightumenrightpowand cadena caracter coma comentario_multilinea comentario_simple decimal difque div entero id igual igualque mas mayigual mayque men menigual menque mod not or pard pari por pow pyc xorinit :   expresion\n            |   condicioncondicion    :   condicion or condicion\n                    |   condicion xor condicion\n                    |   condicion and condicioncondicion  :   not condicioncondicion  :   pari condicion pardcondicion    :   expresion mayque expresion\n                    |   expresion menque expresion\n                    |   expresion mayigual expresion\n                    |   expresion menigual expresion\n                    |   expresion igualque expresion\n                    |   expresion difque expresionexpresion    :   expresion mas expresion\n                    |   expresion men expresion\n                    |   expresion por expresion\n                    |   expresion div expresion\n                    |   expresion mod expresion\n                    |   expresion pow expresionexpresion  :   men expresion %prec umenexpresion  :   pari expresion pardexpresion  :   enteroexpresion  :   decimalexpresion  :   cadenaexpresion  :   caracterexpresion  :   id'
     
-_lr_action_items = {'men':([0,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,],[3,11,3,3,-10,-11,-12,-13,-14,3,3,3,3,3,3,-8,11,-2,-3,-4,-5,-6,-7,-9,]),'pari':([0,3,4,10,11,12,13,14,15,],[4,4,4,4,4,4,4,4,4,]),'entero':([0,3,4,10,11,12,13,14,15,],[5,5,5,5,5,5,5,5,5,]),'decimal':([0,3,4,10,11,12,13,14,15,],[6,6,6,6,6,6,6,6,6,]),'cadena':([0,3,4,10,11,12,13,14,15,],[7,7,7,7,7,7,7,7,7,]),'caracter':([0,3,4,10,11,12,13,14,15,],[8,8,8,8,8,8,8,8,8,]),'id':([0,3,4,10,11,12,13,14,15,],[9,9,9,9,9,9,9,9,9,]),'$end':([1,2,5,6,7,8,9,16,18,19,20,21,22,23,24,],[0,-1,-10,-11,-12,-13,-14,-8,-2,-3,-4,-5,-6,-7,-9,]),'mas':([2,5,6,7,8,9,16,17,18,19,20,21,22,23,24,],[10,-10,-11,-12,-13,-14,-8,10,-2,-3,-4,-5,-6,-7,-9,]),'por':([2,5,6,7,8,9,16,17,18,19,20,21,22,23,24,],[12,-10,-11,-12,-13,-14,-8,12,12,12,-4,-5,-6,-7,-9,]),'div':([2,5,6,7,8,9,16,17,18,19,20,21,22,23,24,],[13,-10,-11,-12,-13,-14,-8,13,13,13,-4,-5,-6,-7,-9,]),'mod':([2,5,6,7,8,9,16,17,18,19,20,21,22,23,24,],[14,-10,-11,-12,-13,-14,-8,14,14,14,-4,-5,-6,-7,-9,]),'pow':([2,5,6,7,8,9,16,17,18,19,20,21,22,23,24,],[15,-10,-11,-12,-13,-14,15,15,15,15,15,15,15,15,-9,]),'pard':([5,6,7,8,9,16,17,18,19,20,21,22,23,24,],[-10,-11,-12,-13,-14,-8,24,-2,-3,-4,-5,-6,-7,-9,]),}
+_lr_action_items = {'men':([0,2,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,32,33,34,35,36,37,38,39,40,41,42,43,44,45,49,50,52,],[4,13,4,4,-22,-23,-24,-25,-26,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,-20,4,13,4,13,-14,-15,-16,-17,-18,-19,13,13,13,13,13,13,13,-21,13,]),'pari':([0,4,5,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,28,32,],[5,28,5,32,28,28,28,28,28,28,28,28,28,28,28,28,32,32,32,28,32,]),'entero':([0,4,5,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,28,32,],[6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,]),'decimal':([0,4,5,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,28,32,],[7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,]),'cadena':([0,4,5,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,28,32,],[8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,]),'caracter':([0,4,5,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,28,32,],[9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,]),'id':([0,4,5,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,28,32,],[10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,]),'not':([0,5,11,24,25,26,32,],[11,11,11,11,11,11,11,]),'$end':([1,2,3,6,7,8,9,10,27,31,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,50,51,],[0,-1,-2,-22,-23,-24,-25,-26,-20,-6,-14,-15,-16,-17,-18,-19,-8,-9,-10,-11,-12,-13,-3,-4,-5,-21,-7,]),'mas':([2,6,7,8,9,10,27,29,33,34,35,36,37,38,39,40,41,42,43,44,45,49,50,52,],[12,-22,-23,-24,-25,-26,-20,12,12,-14,-15,-16,-17,-18,-19,12,12,12,12,12,12,12,-21,12,]),'por':([2,6,7,8,9,10,27,29,33,34,35,36,37,38,39,40,41,42,43,44,45,49,50,52,],[14,-22,-23,-24,-25,-26,-20,14,14,14,14,-16,-17,-18,-19,14,14,14,14,14,14,14,-21,14,]),'div':([2,6,7,8,9,10,27,29,33,34,35,36,37,38,39,40,41,42,43,44,45,49,50,52,],[15,-22,-23,-24,-25,-26,-20,15,15,15,15,-16,-17,-18,-19,15,15,15,15,15,15,15,-21,15,]),'mod':([2,6,7,8,9,10,27,29,33,34,35,36,37,38,39,40,41,42,43,44,45,49,50,52,],[16,-22,-23,-24,-25,-26,-20,16,16,16,16,-16,-17,-18,-19,16,16,16,16,16,16,16,-21,16,]),'pow':([2,6,7,8,9,10,27,29,33,34,35,36,37,38,39,40,41,42,43,44,45,49,50,52,],[17,-22,-23,-24,-25,-26,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,-21,17,]),'mayque':([2,6,7,8,9,10,27,29,33,34,35,36,37,38,39,50,52,],[18,-22,-23,-24,-25,-26,-20,18,18,-14,-15,-16,-17,-18,-19,-21,18,]),'menque':([2,6,7,8,9,10,27,29,33,34,35,36,37,38,39,50,52,],[19,-22,-23,-24,-25,-26,-20,19,19,-14,-15,-16,-17,-18,-19,-21,19,]),'mayigual':([2,6,7,8,9,10,27,29,33,34,35,36,37,38,39,50,52,],[20,-22,-23,-24,-25,-26,-20,20,20,-14,-15,-16,-17,-18,-19,-21,20,]),'menigual':([2,6,7,8,9,10,27,29,33,34,35,36,37,38,39,50,52,],[21,-22,-23,-24,-25,-26,-20,21,21,-14,-15,-16,-17,-18,-19,-21,21,]),'igualque':([2,6,7,8,9,10,27,29,33,34,35,36,37,38,39,50,52,],[22,-22,-23,-24,-25,-26,-20,22,22,-14,-15,-16,-17,-18,-19,-21,22,]),'difque':([2,6,7,8,9,10,27,29,33,34,35,36,37,38,39,50,52,],[23,-22,-23,-24,-25,-26,-20,23,23,-14,-15,-16,-17,-18,-19,-21,23,]),'or':([3,6,7,8,9,10,27,30,31,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,50,51,],[24,-22,-23,-24,-25,-26,-20,24,-6,-14,-15,-16,-17,-18,-19,-8,-9,-10,-11,-12,-13,-3,-4,-5,-21,-7,]),'xor':([3,6,7,8,9,10,27,30,31,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,50,51,],[25,-22,-23,-24,-25,-26,-20,25,-6,-14,-15,-16,-17,-18,-19,-8,-9,-10,-11,-12,-13,25,-4,-5,-21,-7,]),'and':([3,6,7,8,9,10,27,30,31,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,50,51,],[26,-22,-23,-24,-25,-26,-20,26,-6,-14,-15,-16,-17,-18,-19,-8,-9,-10,-11,-12,-13,26,26,-5,-21,-7,]),'pard':([6,7,8,9,10,27,29,30,31,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,],[-22,-23,-24,-25,-26,-20,50,51,-6,-14,-15,-16,-17,-18,-19,-8,-9,-10,-11,-12,-13,-3,-4,-5,50,-21,-7,50,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'init':([0,],[1,]),'expresion':([0,3,4,10,11,12,13,14,15,],[2,16,17,18,19,20,21,22,23,]),}
+_lr_goto_items = {'init':([0,],[1,]),'expresion':([0,4,5,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,28,32,],[2,27,29,33,34,35,36,37,38,39,40,41,42,43,44,45,33,33,33,49,52,]),'condicion':([0,5,11,24,25,26,32,],[3,30,31,46,47,48,30,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,18 +27,30 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> init","S'",1,None,None,None),
-  ('init -> expresion','init',1,'p_init','gramatica.py',151),
-  ('expresion -> expresion mas expresion','expresion',3,'p_expresion','gramatica.py',197),
-  ('expresion -> expresion men expresion','expresion',3,'p_expresion','gramatica.py',198),
-  ('expresion -> expresion por expresion','expresion',3,'p_expresion','gramatica.py',199),
-  ('expresion -> expresion div expresion','expresion',3,'p_expresion','gramatica.py',200),
-  ('expresion -> expresion mod expresion','expresion',3,'p_expresion','gramatica.py',201),
-  ('expresion -> expresion pow expresion','expresion',3,'p_expresion','gramatica.py',202),
-  ('expresion -> men expresion','expresion',2,'p_expresion_unaria','gramatica.py',217),
-  ('expresion -> pari expresion pard','expresion',3,'p_expresion_parentesis','gramatica.py',221),
-  ('expresion -> entero','expresion',1,'p_expresion_entero','gramatica.py',225),
-  ('expresion -> decimal','expresion',1,'p_expresion_decimal','gramatica.py',229),
-  ('expresion -> cadena','expresion',1,'p_expresion_cadena','gramatica.py',233),
-  ('expresion -> caracter','expresion',1,'p_expresion_caracter','gramatica.py',237),
-  ('expresion -> id','expresion',1,'p_expresion_id','gramatica.py',241),
+  ('init -> expresion','init',1,'p_init','gramatica.py',152),
+  ('init -> condicion','init',1,'p_init','gramatica.py',153),
+  ('condicion -> condicion or condicion','condicion',3,'p_condicion','gramatica.py',158),
+  ('condicion -> condicion xor condicion','condicion',3,'p_condicion','gramatica.py',159),
+  ('condicion -> condicion and condicion','condicion',3,'p_condicion','gramatica.py',160),
+  ('condicion -> not condicion','condicion',2,'p_condicion_not','gramatica.py',169),
+  ('condicion -> pari condicion pard','condicion',3,'p_condicion_parentesis','gramatica.py',173),
+  ('condicion -> expresion mayque expresion','condicion',3,'p_condicion_relacional','gramatica.py',177),
+  ('condicion -> expresion menque expresion','condicion',3,'p_condicion_relacional','gramatica.py',178),
+  ('condicion -> expresion mayigual expresion','condicion',3,'p_condicion_relacional','gramatica.py',179),
+  ('condicion -> expresion menigual expresion','condicion',3,'p_condicion_relacional','gramatica.py',180),
+  ('condicion -> expresion igualque expresion','condicion',3,'p_condicion_relacional','gramatica.py',181),
+  ('condicion -> expresion difque expresion','condicion',3,'p_condicion_relacional','gramatica.py',182),
+  ('expresion -> expresion mas expresion','expresion',3,'p_expresion','gramatica.py',202),
+  ('expresion -> expresion men expresion','expresion',3,'p_expresion','gramatica.py',203),
+  ('expresion -> expresion por expresion','expresion',3,'p_expresion','gramatica.py',204),
+  ('expresion -> expresion div expresion','expresion',3,'p_expresion','gramatica.py',205),
+  ('expresion -> expresion mod expresion','expresion',3,'p_expresion','gramatica.py',206),
+  ('expresion -> expresion pow expresion','expresion',3,'p_expresion','gramatica.py',207),
+  ('expresion -> men expresion','expresion',2,'p_expresion_unaria','gramatica.py',222),
+  ('expresion -> pari expresion pard','expresion',3,'p_expresion_parentesis','gramatica.py',226),
+  ('expresion -> entero','expresion',1,'p_expresion_entero','gramatica.py',230),
+  ('expresion -> decimal','expresion',1,'p_expresion_decimal','gramatica.py',234),
+  ('expresion -> cadena','expresion',1,'p_expresion_cadena','gramatica.py',238),
+  ('expresion -> caracter','expresion',1,'p_expresion_caracter','gramatica.py',242),
+  ('expresion -> id','expresion',1,'p_expresion_id','gramatica.py',246),
 ]

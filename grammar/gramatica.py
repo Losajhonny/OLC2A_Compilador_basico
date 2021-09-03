@@ -4,6 +4,7 @@ reserved = {
     'and': 'and',
     'or': 'or',
     'not': 'not',
+    'xor': 'xor',
 }
 
 # Definir tokens
@@ -128,9 +129,9 @@ lexer = lex.lex()
 precedence = (
     ('right', 'igual'), # asignacion
     ('left', 'or'),
+    ('left', 'xor'),
     ('left', 'and'),
     ('right', 'not'),
-    # ('right', 'or', 'and', 'not'),
     ('nonassoc', 'mayque', 'menque', 'mayigual', 'menigual', 'igualque', 'difque'),
     ('left','mas','men'),
     ('left','por','div', 'mod'),
@@ -148,45 +149,49 @@ from ast.expresion.literales.literal import Literal
 from ast.expresion.literales.id import Id
 
 def p_init(t):
-    '''init :   expresion'''
+    '''init :   expresion
+            |   condicion'''
     t[0] = t[1]
 
 # -------------------- condiciones --------------------
-# def p_condicion(t):
-#     '''condicion    :   condicion and condicion
-#                     |   condicion or condicion'''
-#     if t[2] == "and":
-#         t[0] = Logica(OpeLogica.AND, t[1], t[3],  t.lineno(2))
-#     else:
-#         t[0] = Logica(OpeLogica.OR, t[1], t[3],  t.lineno(2))
+def p_condicion(t):
+    '''condicion    :   condicion or condicion
+                    |   condicion xor condicion
+                    |   condicion and condicion'''
+    if t[2] == "and":
+        t[0] = Logica(OpeLogica.AND, t[1], t[3],  t.lineno(2))
+    elif t[2] == "xor":
+        t[0] = Logica(OpeLogica.XOR, t[1], t[3],  t.lineno(2))
+    else:
+        t[0] = Logica(OpeLogica.OR, t[1], t[3],  t.lineno(2))
 
-# def p_condicion_not(t):
-#     'condicion  :   not condicion'
-#     t[0] = Logica(OpeLogica.NOT, t[2], None,  t.lineno(1))
+def p_condicion_not(t):
+    'condicion  :   not condicion'
+    t[0] = Logica(OpeLogica.NOT, t[2], None,  t.lineno(1))
 
-# def p_condicion_parentesis(t):
-#     'condicion  :   pari condicion pard'
-#     t[0] = t[2]
+def p_condicion_parentesis(t):
+    'condicion  :   pari condicion pard'
+    t[0] = t[2]
 
-# def p_condicion_relacional(t):
-#     '''condicion    :   expresion mayque expresion
-#                     |   expresion menque expresion
-#                     |   expresion mayigual expresion
-#                     |   expresion menigual expresion
-#                     |   expresion igualque expresion
-#                     |   expresion difque expresion'''
-#     if t[2] == ">":
-#         t[0] = Relacional(OpeRelacional.MAYORQUE, t[1], t[3],  t.lineno(2))
-#     elif t[2] == "<":
-#         t[0] = Relacional(OpeRelacional.MENORQUE, t[1], t[3],  t.lineno(2))
-#     elif t[2] == ">=":
-#         t[0] = Relacional(OpeRelacional.MAYORIGUAL, t[1], t[3],  t.lineno(2))
-#     elif t[2] == "<=":
-#         t[0] = Relacional(OpeRelacional.MENORIGUAL, t[1], t[3],  t.lineno(2))
-#     elif t[2] == "==":
-#         t[0] = Relacional(OpeRelacional.IGUALQUE, t[1], t[3],  t.lineno(2))
-#     else:
-#         t[0] = Relacional(OpeRelacional.DIFQUE, t[1], t[3],  t.lineno(2))
+def p_condicion_relacional(t):
+    '''condicion    :   expresion mayque expresion
+                    |   expresion menque expresion
+                    |   expresion mayigual expresion
+                    |   expresion menigual expresion
+                    |   expresion igualque expresion
+                    |   expresion difque expresion'''
+    if t[2] == ">":
+        t[0] = Relacional(OpeRelacional.MAYORQUE, t[1], t[3],  t.lineno(2))
+    elif t[2] == "<":
+        t[0] = Relacional(OpeRelacional.MENORQUE, t[1], t[3],  t.lineno(2))
+    elif t[2] == ">=":
+        t[0] = Relacional(OpeRelacional.MAYORIGUAL, t[1], t[3],  t.lineno(2))
+    elif t[2] == "<=":
+        t[0] = Relacional(OpeRelacional.MENORIGUAL, t[1], t[3],  t.lineno(2))
+    elif t[2] == "==":
+        t[0] = Relacional(OpeRelacional.IGUALQUE, t[1], t[3],  t.lineno(2))
+    else:
+        t[0] = Relacional(OpeRelacional.DIFQUE, t[1], t[3],  t.lineno(2))
 
 
 
