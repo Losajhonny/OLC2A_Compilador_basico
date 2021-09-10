@@ -5,11 +5,6 @@ class Logica(Condicion):
     def __init__(self, op, izq, der, linea):
         super().__init__(op, izq, der, linea)
 
-    def soltar(self, lista):
-        # L1:
-        for i in lista:
-            print(f"{i}:")
-
     def unir(self, l1, l2):
         # cond: cond op cond
         listanueva = []

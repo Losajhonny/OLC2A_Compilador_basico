@@ -5,16 +5,27 @@ reserved = {
     'or': 'or',
     'not': 'not',
     'xor': 'xor',
+    'if': 'if',
+    'then': 'then',
+    'else': 'else',
+    'end': 'end',
+    'while': 'while',
+    'do': 'do',
+    'for': 'for',
+    'to': 'to',
 }
 
 # Definir tokens
 tokens = [
     'igual',
     'pyc',
+    'dpuntos',
     'coma',
 
     'pari',
     'pard',
+    'llai',
+    'llad',
 
     'mas',
     'men',
@@ -44,10 +55,13 @@ tokens = [
 # Tokens
 t_igual             = r'='
 t_pyc               = r';'
+t_dpuntos           = r':'
 t_coma              = r'\,'
 
 t_pari              = r'\('
 t_pard              = r'\)'
+t_llai              = r'\{'
+t_llad              = r'\}'
 
 t_mas               = r'\+'
 t_men               = r'-'
@@ -147,11 +161,66 @@ from ast.expresion.operacion.logica import Logica
 from ast.expresion.operacion.relacional import Relacional
 from ast.expresion.literales.literal import Literal
 from ast.expresion.literales.id import Id
+from ast.instruccion.asignacion import Asignacion
+from ast.instruccion.iif import If
+from ast.instruccion.wwhile import While
+from ast.instruccion.dowhile import DoWhile
+from ast.instruccion.ffor import For
+from ast.arbol import Arbol
 
 def p_init(t):
-    '''init :   expresion
-            |   condicion'''
+    '''init :   Lsent
+            |   empty'''
+    t[0] = Arbol(t[1])
+
+def p_empty(t):
+    'empty :'
+    t[0] = []
+
+# ------------------- Lsent -------------------
+def p_Lsent(t):
+    '''Lsent    :   Lsent sent
+                |   sent'''
+    if len(t) == 3:
+        t[0] = t[1]
+        t[0].append(t[2])
+    else:
+        t[0] = [t[1]]
+
+def p_instruccion(t):
+    '''sent :   iif
+            |   wwhile
+            |   dowhile
+            |   ffor
+            |   asign'''
     t[0] = t[1]
+
+def p_sent_if_else(t):
+    '''iif  :   if condicion then llai Lsent llad
+            |   if condicion then llai Lsent llad else llai Lsent llad'''
+    if len(t) == 11:
+        t[0] = If(t[2], t[5], t[9], t.lineno(1))
+    else:
+        t[0] = If(t[2], t[5], None, t.lineno(1))
+
+def p_sent_for(t):
+    'ffor   :   for id igual expresion to expresion do llai Lsent llad'
+    t[0] = For(t[2], t[4], t[6], t[9], t.lineno(1))
+
+def p_sent_while(t):
+    'wwhile :   while condicion do llai Lsent llad'
+    t[0] = While(t[2], t[5], t.lineno(1))
+
+def p_sent_do_while(t):
+    'dowhile    :   do llai Lsent llad while condicion pyc'
+    t[0] = DoWhile(t[3], t[6], t.lineno(1))
+
+def p_instruccion_asignacion(t):
+    'asign  :   id igual expresion pyc'
+    t[0] = Asignacion(t[1], t[3], t.lineno(1))
+
+
+
 
 # -------------------- condiciones --------------------
 def p_condicion(t):

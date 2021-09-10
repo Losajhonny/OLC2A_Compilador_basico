@@ -9,3 +9,8 @@ class Condicion(Operacion):
         self.lf = []
         self.true = ""
         self.false = ""
+
+    def soltar(self, lista):
+        # L1:
+        for i in lista:
+            print(f"{i}:")

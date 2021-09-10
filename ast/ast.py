@@ -8,10 +8,6 @@ class Ast(ABC):
     def __init__(self):
         __metaclass__ = ABCMeta
 
-    def newNodo(self):
-        Ast.nodos = Ast.nodos + 1
-        return f"n{Ast.nodos}"
-
     # Metodos para crear temporales y etiquetas
     def newTemp(self):
         Ast.temp = Ast.temp + 1
@@ -27,6 +23,11 @@ class Ast(ABC):
     def getEti(self):
         return f"L{Ast.eti}"
 
+    # Metodos para crear el arbol de analisis de sintaxis
+    def newNodo(self):
+        Ast.nodos = Ast.nodos + 1
+        return f"n{Ast.nodos}"
+        
     def crearHoja(self, valor):
         ptr = self.newNodo()
         print(f"{ptr} [label=\"{valor}\", color=lightblue2, style=filled]")

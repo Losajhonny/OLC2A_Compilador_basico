@@ -3,3 +3,4 @@ class Simbolo():
         self.id = id
         self.tipo = tipo
         self.valor = valor
+
